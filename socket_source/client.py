@@ -30,16 +30,15 @@ def send_message_to_server():
             client.close()
             break
         else:
-            msg_send = f'{nickname}: {msg}'
+            msg_send = f'[{nickname}]: {msg}'
             send_message_protocol(msg_send, client)
 
 
 send_thread = threading.Thread(target = send_message_to_server)
-receive_thread = threading.Thread(target = receive_message_from_server, daemon=True)
+receive_thread = threading.Thread(target = receive_message_from_server)
 
 send_thread.start()
 receive_thread.start()
 
-send_thread.join()
-receive_thread.join()
+
 
