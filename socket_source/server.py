@@ -44,6 +44,7 @@ def handle_client(client, address):
             nickname = nicknames[index]
             
             print(f'[DISCONNECTED] {address}')
+            print(f'[ONLINE CLIENT] {threading.active_count() - 2}')   
             broadcast(f'{nickname} has left the chat!')
             
             nicknames.remove(nickname)
